@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block title %}Товар № {{ good.id }}{% endblock %}
+
+{% block header %}<h1>{{ good.title }}</h1>{% endblock %}
+
+{% block body %}
+    <p>{{ good.text }}</p>
+    <p>{{ good.date }}</p>
+{% endblock %}

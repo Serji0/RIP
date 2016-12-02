@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}Товары{% endblock %}
+
+{% block header %}<h1 class="text-left">Товары</h1>{% endblock %}
+
+{% block body %}
+    {% for good in goods %}
+        {% if not good.id|divisibleby:2 %}
+            <div class="row">
+        {% endif %}
+        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+            {% include 'good_element.html' with element=good %}
+        </div>
+        {% if good.id|divisibleby:2 or forloop.last %}
+            </div>
+            <hr>
+        {% endif %}
+    {% empty %}
+        <li>Список пуст</li>
+    {% endfor %}
+{% endblock %}
