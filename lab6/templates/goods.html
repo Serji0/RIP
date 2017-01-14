@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block title %}Товары{% endblock %}
+
+{% block header %}<h2 class="text-left">Список товаров:</h2>{% endblock %}
+
+{% block body %}
+    {% for good in goods %}
+        <h4>{{ good.name }}</h4>
+        <p>{{ good.description }}</p>
+        <hr>
+    {% endfor %}
+{% endblock %}

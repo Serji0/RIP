@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}Главная{% endblock %}
+
+{% block body %}
+    <h3><a href="{% url 'registration' %}">Регистрация</a></h3>
+    <h3><a href="{% url 'authorization' %}">Авторизация</a></h3>
+    <div class="container">
+        <div class="footer">
+            <hr>
+            <p>Baskakov Sergey</p>
+        </div>
+    </div>
+{% endblock %}

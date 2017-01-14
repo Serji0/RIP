@@ -1,0 +1,12 @@
+body{
+    text-align: center;
+}
+.output {
+    width: 60%;
+    height: 400px;
+    margin: 0 20% 0 20%;
+}
+
+.stop {
+    display: none;
+}
