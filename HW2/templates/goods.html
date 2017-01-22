@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block title %}Список товаров{% endblock %}
+
+{% block navbar %}
+    <div class="btn_navbar">
+        <span class="navbar_name">{{ user }}</span>
+        <button type="button" class="btn btn-primary"><a href="{% url 'logout' %}">Выйти</a></button>
+    </div>
+{% endblock %}
+
+{% block header %}<!--<h2>Список команд:</h2>-->{% endblock %}
+
+{% block body %}
+    <div class="goods_list">
+        {% for good in goods %}
+            <h4><img class="logo" src="{{ MEDIA_URL }}{{ good.logo.url }}"><a href="{% url 'good' good.id %}">{{ good.name }}</a></h4>
+            <p>{{ good.description }}</p>
+            <hr>
+        {% endfor %}
+    </div>
+    <button type="button" class="btn btn-primary btn-add-good btn-lg" data-toggle="modal" data-target="#modal1">Добавить товар</button>
+{% endblock %}
+
+{% block modal %}
+    <div class="modal fade" id="modal1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title">Добавление товара</h3>
+                </div>
+                <div class="modal-body">
+                    <form class="add_good" method="POST" enctype="multipart/form-data" action="{% url 'add_good' %}">
+                        {% csrf_token %}
+                        <label class="good-name">
+                            Название товара:
+                            <input type="text" name="name" id="name">
+                        </label>
+                        <label class="good-price">
+                            Цена:
+                            <input type="number" name="price" id="price">
+                        </label>
+                        <label class="good-description">
+                            Описание:
+                            <input type="text" name="description" id="description">
+                        </label>
+                        <label class="good-logo">
+                            Логотип:
+                            <input type="file" name="logo" id="logo">
+                        </label>
+                        <br>
+                        <button class="btn btn-primary btn-save" type="submit">Сохранить</button>
+                        <button class="btn btn-primary btn-close" type="button" data-dismiss="modal">Отмена</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
